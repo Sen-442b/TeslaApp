@@ -9,6 +9,9 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import car from "../assets/images/car.png";
+import { FlatList } from "react-native-gesture-handler";
+import menuOptions from "../assets/menuOptions";
+import MenuOption from "./components/MenuOption";
 
 export default function Page() {
   return (
@@ -27,14 +30,7 @@ export default function Page() {
         <FontAwesome5 name="bolt" size={26} color="gray" />
         <Ionicons name="car-sport-sharp" size={26} color="gray" />
       </View>
-      <View style={styles.optionRow}>
-        <View style={styles.optionRowChild}>
-          <MaterialCommunityIcons name="car" size={26} color="gray" />
-
-          <Text style={styles.optionText}>Controls</Text>
-        </View>
-        <MaterialIcons name="keyboard-arrow-right" size={26} color="gray" />
-      </View>
+      <FlatList data={menuOptions} renderItem={MenuOption} />
     </View>
   );
 }
@@ -66,21 +62,5 @@ const styles = StyleSheet.create({
   controls: {
     flexDirection: "row",
     justifyContent: "space-around",
-  },
-  optionRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 20,
-  },
-  optionRowChild: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  optionText: {
-    color: "#eee",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginLeft: 10,
   },
 });
